@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-info" href="#">LOGIN</a>
+  </nav>
+
+   <div class="col mt-4 mx-auto text-primary font-italic ">
+      {% with error_messages = get_flashed_messages() %}
+        {% if error_messages %}
+        <ul>
+            {% for error_message in error_messages %}
+            <li>{{ error_message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
+
+<div class="container">
+  <div class="row align-items-start">
+    </div>
+  <div class="row align-items-end">
+    <div class="col">
+  </div>
+    
+    <div class="col">
+
+{% if session['chances'] > 0 %}
+
+<form method="POST" action="/login">
+<div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input name='username' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input name='password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" value=Login>LOGIN</button>
+</form>
+{% endif %}
+</body>    </div>
+    <div class="col">
+   </div>
+  </div>
+</div> 
+
+
+
+</body>
+</html>

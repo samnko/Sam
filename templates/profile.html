@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+   	<a class="navbar-brand text-info" href="#">PROFILE CANDIDAT</a>
+</nav>
+
+
+<h1>PARTI</h1>
+    <ul>
+        <li>
+
+{% with error_messages = get_flashed_messages() %}
+        {% if error_messages %}
+        <ul>
+            {% for error_message in error_messages %}
+            <li style="color:red">{{ error_message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
+
+{% if 'username' in session and session['username'] == user.username %}
+<form method="POST" action='/profile/{{user.id}}/new_password'>
+
+<div class="form-group">
+      <label for="exampleFormControlTextarea1">Enter your old password</label>
+      <input type="password" name='old_password' class="form-control">
+    </div>
+<div class="form-group">
+      <label for="exampleFormControlTextarea1">Modify your password</label>
+      <input type="password" name="new_password" class="form-control"> 
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">MODIFY</button>
+    </div>
+
+</form>
+
+<form method="POST" action='/profile/{{user.id}}/new_username'>
+<div class="form-group">
+      <label for="exampleFormControlTextarea1">Enter your new username</label>
+      <input type="text" name="new_username" class="form-control">
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">MODIFY</button>
+    </div>
+</form>
+{% endif %}
+
+
+<h6 class="card-title">-----> Nom du user: {{user.username}}</h6>
+{% for message in messages %}
+<h5 class="card-title">-----> Message: {{message.text}} </h5>
+<label for="pet-select"></label>
+{% endfor %}
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

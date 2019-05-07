@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+    	<a class="navbar-brand text-info" href="#">FIL DISCUSSION</a>
+
+  {% if 'username' in session %}
+
+  <a href="/logout" class="btn btn-primary">Logout</a>
+  {% else %}
+  <a href="/login" class="btn btn-primary">Login</a>
+  {% endif %}
+
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col order-last">
+      <form  method="POST" action='/message/'>
+
+  <div class="card-body">
+    {% for discussion in discussions %}
+    <h5 class="card-title">Message number : {{messages_number}}</h5>
+    <h6 class="card-title"> Last message : {{dernier_message.text}}</h6>
+    <br>
+    <a href="/liste_messages/{{discussion.id}}/" class="btn btn-primary">LISTE MESSAGES</a>
+    <div>----------------------------------</div>
+    {% endfor %}
+    </form>
+
+</div>
+</div>
+</div>
+<div class="col">
+</div>
+<div class="col order-first">
+
+
+    </div>
+  </div>
+</div>
+
+  
+
+</body> 
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html>  
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-info" href="#">FIL DISCUSSION</a>
+  </nav>
+  <h6 class="card-title">Fil'name: {{discussion.title}}</h6>
+</head>
+      <form  method="POST" action='/liste_messages/{{discussion.id}}/'>
+        {% if 'username' in session %}
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Laissez un message</label>
+      <textarea name='text' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">SEND MESSAGE</button>
+    </div>
+    {% endif %}
+    </form>
+    <div class="col">
+</div>
+<div class="col order-first">
+
+  <div class="col">
+</div>
+<div class="col order-first">
+      <div class="container">
+  <div class="row">
+    <div class="col order-last">
+  {% for message in messages %}
+  <div class="card-body">
+    <h6 class="card-title">Message: {{message.text}}</h6>
+    <p class="card-title">Date: {{message.date}}</p>
+    <a href='/profile/{{message.user.id}}/' class="card-title">From: {{message.user.username}} </a>
+
+  </div>
+  {% endfor %}
+ 
+    
+
+    
+   
+  </div>
+</div>
+
+</body> 
+</html>
